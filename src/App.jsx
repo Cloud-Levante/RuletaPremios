@@ -29,49 +29,48 @@ function ThemeToggle({ dark, onToggle }) {
 function Pointer({ idle }) {
   return (
     <div className={`custom-pointer ${idle ? 'pointer-idle' : ''}`}>
-      <svg width="60" height="80" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="52" height="90" viewBox="0 0 52 90" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="pointer-body" x1="30" y1="0" x2="30" y2="80" gradientUnits="userSpaceOnUse">
+          <linearGradient id="pointer-body" x1="26" y1="0" x2="26" y2="90" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="var(--pointer-top)" />
             <stop offset="50%" stopColor="var(--pointer-mid)" />
             <stop offset="100%" stopColor="var(--pointer-bottom)" />
           </linearGradient>
-          <linearGradient id="pointer-shine" x1="18" y1="0" x2="42" y2="80" gradientUnits="userSpaceOnUse">
+          <linearGradient id="pointer-shine" x1="14" y1="0" x2="38" y2="90" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#ffffff" stopOpacity="0.5" />
             <stop offset="40%" stopColor="#ffffff" stopOpacity="0" />
           </linearGradient>
-          <filter id="pointer-shadow" x="-10" y="-6" width="80" height="100">
+          <filter id="pointer-shadow" x="-10" y="-6" width="72" height="110">
             <feDropShadow dx="0" dy="4" stdDeviation="5" floodColor="#000" floodOpacity="0.5" />
           </filter>
         </defs>
-        {/* Main body */}
         <path
-          d="M30 74 L6 16 A26 26 0 0 1 54 16 Z"
+          d="M26 86 L5 18 A22 22 0 0 1 47 18 Z"
           fill="url(#pointer-body)"
           filter="url(#pointer-shadow)"
         />
-        {/* Highlight / shine */}
         <path
-          d="M30 74 L6 16 A26 26 0 0 1 54 16 Z"
+          d="M26 86 L5 18 A22 22 0 0 1 47 18 Z"
           fill="url(#pointer-shine)"
         />
-        {/* Border */}
         <path
-          d="M30 74 L6 16 A26 26 0 0 1 54 16 Z"
+          d="M26 86 L5 18 A22 22 0 0 1 47 18 Z"
           fill="none"
           stroke="var(--pointer-stroke)"
           strokeWidth="2"
         />
-        {/* Center bolt */}
-        <circle cx="30" cy="22" r="9" fill="var(--pointer-bolt-bg)" />
-        <circle cx="30" cy="22" r="9" fill="none" stroke="var(--pointer-stroke)" strokeWidth="1.5" />
-        <circle cx="30" cy="22" r="4" fill="var(--pointer-bolt-dot)" />
-        {/* Bolt shine */}
-        <ellipse cx="27" cy="19" rx="3" ry="2" fill="#ffffff" opacity="0.25" />
+        <circle cx="26" cy="24" r="9" fill="var(--pointer-bolt-bg)" />
+        <circle cx="26" cy="24" r="9" fill="none" stroke="var(--pointer-stroke)" strokeWidth="1.5" />
+        <circle cx="26" cy="24" r="4" fill="var(--pointer-bolt-dot)" />
+        <ellipse cx="23" cy="21" rx="3" ry="2" fill="#ffffff" opacity="0.25" />
       </svg>
     </div>
   )
 }
+
+const PEG_COUNT = 36
+
+// No sync hook needed — pegs spin via CSS class
 
 export default function App() {
   const [prizes, setPrizes] = useState([])
@@ -203,6 +202,7 @@ export default function App() {
           <div className="wheel-container">
             <div
               className="wheel-rotation-offset"
+
               style={{ '--num-prizes': prizes.length }}
             >
               <Wheel
@@ -226,6 +226,11 @@ export default function App() {
                 disableInitialAnimation={true}
                 pointerProps={{ style: { display: 'none' } }}
               />
+            </div>
+            <div className={`wheel-pegs-ring ${mustSpin ? 'pegs-spinning' : ''}`}>
+              {Array.from({ length: PEG_COUNT }).map((_, i) => (
+                <div key={i} className="peg" style={{ '--i': i, '--total': PEG_COUNT }} />
+              ))}
             </div>
             <div className="wheel-3d-overlay" />
             <div className="wheel-center-hub">

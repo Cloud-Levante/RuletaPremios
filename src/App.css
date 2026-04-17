@@ -282,11 +282,11 @@ body {
 /* ===== Custom Pointer ===== */
 .custom-pointer {
   position: absolute;
-  top: -22px;
+  top: -16px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
-  transform-origin: center 70%;
+  transform-origin: center 65%;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
 }
 
@@ -350,6 +350,60 @@ body {
 /* Clip canvas to circle */
 .wheel-rotation-offset > div canvas {
   clip-path: circle(48.5%);
+}
+
+/* ===== Pegs (pins around wheel edge) ===== */
+.wheel-pegs-ring {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 570px;
+  height: 570px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.pegs-spinning {
+  animation: pegsSpin 2s linear infinite;
+}
+
+@keyframes pegsSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.peg {
+  position: absolute;
+  width: 8px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  --angle: calc(var(--i) * (360 / var(--total)) * 1deg);
+  --radius: 280px;
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--angle))
+    translateY(calc(-1 * var(--radius)));
+  border-radius: 4px;
+  background:
+    linear-gradient(180deg, #e4e4e7 0%, #a1a1aa 50%, #71717a 100%);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Rounded shiny cap */
+.peg::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff, #c0c0c5 100%);
 }
 
 /* 3D convex overlay — light reflection on top of wheel */
@@ -611,6 +665,22 @@ body {
   .hub-logo {
     width: 64px;
     height: 64px;
+  }
+
+  .peg {
+    width: 5px;
+    height: 11px;
+    --radius: 152px;
+  }
+
+  .peg::after {
+    width: 3px;
+    height: 3px;
+  }
+
+  .custom-pointer svg {
+    width: 36px;
+    height: 62px;
   }
 
   .wheel-leds {
