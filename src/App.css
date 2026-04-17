@@ -453,39 +453,56 @@ body {
   object-fit: cover;
 }
 
-/* ===== Spin Button ===== */
-.spin-button {
-  padding: 0.875rem 3rem;
+/* ===== Spin Overlay Button (centered on wheel) ===== */
+.spin-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #ffffff;
   font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  border: 1px solid var(--border-hover);
-  border-radius: 10px;
   cursor: pointer;
-  background: var(--btn-bg);
-  color: var(--btn-text);
   transition: all 0.2s ease;
-  position: relative;
+  animation: spinOverlayIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    0 0 40px rgba(0, 0, 0, 0.4),
+    0 0 80px rgba(0, 0, 0, 0.15);
 }
 
-.spin-button:hover:not(:disabled) {
-  box-shadow: 0 0 30px var(--btn-glow), 0 0 60px var(--btn-glow-far);
-  transform: translateY(-1px);
+@keyframes spinOverlayIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
-.spin-button:active:not(:disabled) {
-  transform: translateY(0);
-  box-shadow: none;
+.spin-overlay:hover {
+  background: rgba(0, 0, 0, 0.75);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 0 50px rgba(0, 0, 0, 0.5),
+    0 0 100px rgba(255, 255, 255, 0.05);
+  transform: translate(-50%, -50%) scale(1.05);
 }
 
-.spin-button:disabled,
-.spin-button.spinning {
-  opacity: 0.3;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+.spin-overlay:active {
+  transform: translate(-50%, -50%) scale(0.97);
 }
 
 /* ===== Upload Button ===== */
@@ -692,8 +709,9 @@ body {
     height: 54px;
   }
 
-  .spin-button {
-    padding: 0.75rem 2.5rem;
-    font-size: 0.85rem;
+  .spin-overlay {
+    width: 90px;
+    height: 90px;
+    font-size: 0.8rem;
   }
 }

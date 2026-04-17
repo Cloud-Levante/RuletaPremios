@@ -114,6 +114,7 @@ export default function App() {
   const [winner, setWinner] = useState(null)
   const [showModal, setShowModal] = useState(false)
   const [dark, setDark] = useState(true)
+  const [showSpinBtn, setShowSpinBtn] = useState(true)
   const fileInputRef = useRef(null)
 
   useEffect(() => {
@@ -166,6 +167,7 @@ export default function App() {
     const randomPrize = Math.floor(Math.random() * prizes.length)
     setPrizeNumber(randomPrize)
     setMustSpin(true)
+    setShowSpinBtn(false)
     setWinner(null)
     setShowModal(false)
   }
@@ -176,8 +178,9 @@ export default function App() {
     setShowModal(true)
   }
 
-  function closeModal() {
+  function closeModal(restoreBtn = false) {
     setShowModal(false)
+    if (restoreBtn) setShowSpinBtn(true)
   }
 
   const theme = dark ? 'dark' : 'light'
@@ -264,15 +267,12 @@ export default function App() {
               <img src="/CL_IONOS-logo.png" alt="Cloud Levante × IONOS" className="hub-logo" />
             </div>
           </div>
+          {showSpinBtn && (
+            <button className="spin-overlay" onClick={handleSpin}>
+              ¡GIRAR!
+            </button>
+          )}
         </div>
-
-        <button
-          className={`spin-button ${mustSpin ? 'spinning' : ''}`}
-          onClick={handleSpin}
-          disabled={mustSpin}
-        >
-          {mustSpin ? 'Girando...' : '¡GIRAR!'}
-        </button>
 
         <input
           ref={fileInputRef}
@@ -284,14 +284,14 @@ export default function App() {
       </main>
 
       {showModal && winner && (
-        <div className="modal-overlay" onClick={closeModal}>
+        <div className="modal-overlay" onClick={() => closeModal(winner?.fullName !== null)}>
           <div className="modal" onClick={e => e.stopPropagation()}>
             {winner.fullName === null ? (
               <>
                 <div className="modal-icon">🔄</div>
                 <h2 className="modal-title">¡Inténtalo de nuevo!</h2>
                 <p className="modal-subtitle">La ruleta te da otra oportunidad</p>
-                <button className="modal-close" onClick={() => { closeModal(); handleSpin() }}>
+                <button className="modal-close" onClick={() => { closeModal(false); handleSpin() }}>
                   ¡Girar de nuevo!
                 </button>
               </>
@@ -302,7 +302,7 @@ export default function App() {
                 <p className="modal-subtitle">Tu premio es:</p>
                 <div className="modal-prize">{winner.fullName}</div>
                 <p className="modal-note">Pásate por nuestro stand para canjearlo</p>
-                <button className="modal-close" onClick={closeModal}>
+                <button className="modal-close" onClick={() => closeModal(true)}>
                   ¡Genial!
                 </button>
               </>
