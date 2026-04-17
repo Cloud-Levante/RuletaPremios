@@ -235,15 +235,15 @@ body {
 /* ===== Wheel Wrapper ===== */
 .wheel-wrapper {
   position: relative;
-  /* Fixed size = wheel (570) + ring padding (16*2) = 602 */
-  width: 602px;
-  height: 602px;
+  /* Fixed size = wheel (570) + ring padding (20*2) = 610 */
+  width: 610px;
+  height: 610px;
 }
 
 /* ===== LED Ring ===== */
 .wheel-leds {
   position: absolute;
-  inset: -18px;
+  inset: -40px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 5;
@@ -257,7 +257,7 @@ body {
   top: 50%;
   left: 50%;
   --angle: calc(var(--i) * (360 / var(--total)) * 1deg);
-  --radius: 318px;
+  --radius: 340px;
   transform:
     translate(-50%, -50%)
     rotate(var(--angle))
@@ -309,16 +309,22 @@ body {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  /* Metallic ring */
-  padding: 16px;
+  /* Thicker metallic ring */
+  padding: 20px;
   background:
-    radial-gradient(circle at 35% 25%, var(--ring-shine), transparent 50%),
-    linear-gradient(145deg, var(--ring-mid), var(--ring-outer) 40%, var(--ring-inner) 80%);
+    radial-gradient(circle at 30% 20%, var(--ring-shine), transparent 40%),
+    linear-gradient(145deg, var(--ring-mid), var(--ring-outer) 35%, var(--ring-inner) 75%, var(--ring-outer) 100%);
   box-shadow:
-    0 8px 30px var(--ring-shadow),
-    0 2px 8px var(--ring-shadow),
-    inset 0 2px 4px var(--ring-shine),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+    /* Outer depth */
+    0 10px 40px var(--ring-shadow),
+    0 3px 10px var(--ring-shadow),
+    /* Outer bevel highlight */
+    inset 0 3px 6px var(--ring-shine),
+    /* Outer bevel shadow */
+    inset 0 -3px 6px rgba(0, 0, 0, 0.4),
+    /* Inner groove — dark ring where segments meet the frame */
+    inset 0 0 0 19px var(--ring-inner),
+    inset 0 0 0 20px rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -349,7 +355,7 @@ body {
 /* 3D convex overlay — light reflection on top of wheel */
 .wheel-3d-overlay {
   position: absolute;
-  inset: 16px;
+  inset: 20px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 3;
@@ -577,45 +583,45 @@ body {
     font-size: 1.75rem;
   }
 
-  /* wheel (320) + ring padding (10*2) = 340 */
+  /* wheel (310) + ring padding (14*2) = 338 */
   .wheel-wrapper {
-    width: 340px;
-    height: 340px;
+    width: 338px;
+    height: 338px;
   }
 
   .wheel-container {
-    padding: 10px;
+    padding: 14px;
   }
 
   .wheel-rotation-offset > div {
-    width: 320px !important;
-    height: 320px !important;
-    max-width: 320px !important;
-    max-height: 320px !important;
+    width: 310px !important;
+    height: 310px !important;
+    max-width: 310px !important;
+    max-height: 310px !important;
   }
 
   .wheel-3d-overlay {
-    inset: 10px;
+    inset: 14px;
   }
 
   .wheel-center-hub {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
   }
 
   .wheel-center-hub::after {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
   }
 
   .wheel-leds {
-    inset: -12px;
+    inset: -28px;
   }
 
   .led {
     width: 7px;
     height: 7px;
-    --radius: 182px;
+    --radius: 196px;
   }
 
   .custom-pointer {
