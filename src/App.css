@@ -224,7 +224,7 @@ body {
 /* ===== Header ===== */
 .header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.3rem;
   position: relative;
   z-index: 1;
 }
@@ -234,25 +234,22 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
-.logo-text {
-  font-size: 0.85rem;
-  font-weight: 600;
-  line-height: 1.2;
-  text-align: center;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+.header-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 6px;
 }
 
-.logo-text.cl {
-  color: var(--text-primary);
+.cl-logo {
+  height: 80px;
 }
 
-.logo-text.ionos {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
+.ionos-logo {
+  height: 80px;
 }
 
 .header-x {

@@ -216,9 +216,9 @@ export default function App() {
 
       <header className="header">
         <div className="header-logos">
-          <span className="logo-text cl">Cloud<br />Levante</span>
+          <img src="/cloudlevante-logo.jpg" alt="Cloud Levante" className="header-logo cl-logo" />
           <span className="header-x">&times;</span>
-          <span className="logo-text ionos">IONOS</span>
+          <img src="/ionos-logo.jpg" alt="IONOS" className="header-logo ionos-logo" />
         </div>
         <h1 className="title">Ruleta de la Nube</h1>
         <p className="subtitle">Gira y descubre tu premio</p>
