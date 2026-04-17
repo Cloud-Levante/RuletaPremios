@@ -129,20 +129,44 @@ body {
   padding: 1.5rem 1.5rem;
   position: relative;
   overflow: hidden;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
-/* Ambient glow */
+/* Background image layer */
+.app::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/blue_world_background.jpeg') center bottom / cover no-repeat;
+  z-index: 0;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Overlay to tint the background per theme */
 .app::before {
   content: '';
   position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, var(--ambient-glow) 0%, transparent 70%);
-  pointer-events: none;
+  inset: 0;
+  z-index: 0;
+  transition: background 0.3s ease;
+}
+
+/* Dark mode: darken slightly, keep the blue mood */
+.app.dark::after {
+  opacity: 0.5;
+  filter: brightness(0.6) saturate(1.2);
+}
+.app.dark::before {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Light mode: wash out, lighten substantially */
+.app.light::after {
+  opacity: 0.3;
+  filter: brightness(1.5) saturate(0.4);
+}
+.app.light::before {
+  background: rgba(255, 255, 255, 0.6);
 }
 
 /* ===== Top Bar (theme + settings) ===== */
@@ -252,9 +276,10 @@ body {
   height: 80px;
 }
 
-.header-x {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+.header-x-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
 }
 
 .title {
