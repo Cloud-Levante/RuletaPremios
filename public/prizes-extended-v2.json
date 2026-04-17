@@ -1,0 +1,67 @@
+[
+  {
+    "option": "Demo IA",
+    "fullName": "Acceso a demo exclusiva de inteligencia artificial",
+    "style": { "backgroundColor": "#003D8F", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Plan Seguridad",
+    "fullName": "Guía práctica: Plan de seguridad en 100 días",
+    "style": { "backgroundColor": "#FF6B00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Auditoría Cyber",
+    "fullName": "Auditoría express de ciberseguridad",
+    "style": { "backgroundColor": "#0057C2", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Costes Cloud",
+    "fullName": "Revisión de costes cloud con recomendaciones",
+    "style": { "backgroundColor": "#FF8C00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Consultoría 30'",
+    "fullName": "Sesión de consultoría (30 min)",
+    "style": { "backgroundColor": "#004DB3", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Quick Win",
+    "fullName": "Identificación quick win para tu empresa",
+    "style": { "backgroundColor": "#E55A00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Casos Uso IA",
+    "fullName": "Análisis de casos de uso de inteligencia artificial",
+    "style": { "backgroundColor": "#0066D6", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Análisis RGPD",
+    "fullName": "Análisis rápido de cumplimiento RGPD",
+    "style": { "backgroundColor": "#003A99", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Migración Express",
+    "fullName": "Consultoría de migración cloud express",
+    "style": { "backgroundColor": "#FF9E2C", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Hosting 3 meses",
+    "fullName": "3 meses de hosting web gratuito",
+    "style": { "backgroundColor": "#0070E0", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Kit Merch",
+    "fullName": "Kit de merchandising Cloud Levante × IONOS",
+    "style": { "backgroundColor": "#CC4A00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Vuelve a girar",
+    "fullName": null,
+    "style": { "backgroundColor": "#0052A5", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Monitor Web",
+    "fullName": "Monitorización web gratuita durante 1 mes",
+    "style": { "backgroundColor": "#1A5BB5", "textColor": "#ffffff" }
+  }
+]

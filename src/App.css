@@ -415,13 +415,7 @@ body {
   justify-content: center;
 }
 
-/* Rotation offset: the library calculates the stop position for its own
-   pointer (top-right). Our pointer is at top-center, so we rotate the wheel
-   by one full segment to align the winning prize under our pointer.
-   Auto-adjusts for any number of prizes via --num-prizes. */
-.wheel-rotation-offset {
-  transform: rotate(calc(-360deg / var(--num-prizes)));
-}
+/* No CSS rotation offset — compensation is done in JS by shifting prizeNumber */
 
 /* Force library wrapper to exact size and center it */
 .wheel-rotation-offset > div {
@@ -459,7 +453,7 @@ body {
   width: 170px;
   height: 170px;
   border-radius: 50%;
-  z-index: 4;
+  z-index: 10;
   pointer-events: none;
   background:
     radial-gradient(circle at 35% 30%, var(--hub-shine), transparent 55%),

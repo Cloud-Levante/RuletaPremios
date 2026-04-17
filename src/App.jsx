@@ -185,6 +185,11 @@ export default function App() {
 
   const theme = dark ? 'dark' : 'light'
   const idle = !mustSpin && !showModal
+  // The library's pointer is at a fixed ~40° angle clockwise from top-center.
+  // We calculate how many segments that corresponds to and shift accordingly.
+  // With 9 prizes: 40°/40° = 1 segment. With 16: 40°/22.5° ≈ 2 segments.
+  const segmentOffset = prizes.length > 0 ? Math.round(prizes.length / 9) : 0
+  const adjustedPrize = prizes.length > 0 ? (prizeNumber + segmentOffset) % prizes.length : 0
 
   if (loading) {
     return (
@@ -242,12 +247,12 @@ export default function App() {
             >
               <Wheel
                 mustStartSpinning={mustSpin}
-                prizeNumber={prizeNumber}
+                prizeNumber={adjustedPrize}
                 data={prizes}
                 onStopSpinning={handleStopSpinning}
                 outerBorderColor="#1a1a1f"
                 outerBorderWidth={8}
-                innerRadius={0}
+                innerRadius={15}
                 innerBorderColor="transparent"
                 innerBorderWidth={0}
                 radiusLineColor="rgba(0,0,0,0.5)"
