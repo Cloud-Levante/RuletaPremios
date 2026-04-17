@@ -53,6 +53,7 @@ body {
   --pointer-mid: #a1a1aa;
   --pointer-bottom: #52525b;
   --pointer-stroke: rgba(255, 255, 255, 0.4);
+  --pointer-shadow: rgba(0, 0, 0, 0.5);
   --pointer-bolt-bg: #27272a;
   --pointer-bolt-dot: #e4e4e7;
   /* Center hub */
@@ -99,10 +100,11 @@ body {
   --led-on-1: #FFD700;
   --led-on-2: #FF6B00;
   /* Pointer */
-  --pointer-top: #3f3f46;
+  --pointer-top: #71717a;
   --pointer-mid: #52525b;
-  --pointer-bottom: #27272a;
-  --pointer-stroke: rgba(0, 0, 0, 0.25);
+  --pointer-bottom: #3f3f46;
+  --pointer-stroke: rgba(0, 0, 0, 0.2);
+  --pointer-shadow: rgba(0, 0, 0, 0.25);
   --pointer-bolt-bg: #e4e4e7;
   --pointer-bolt-dot: #27272a;
   /* Center hub */
@@ -287,7 +289,9 @@ body {
   transform: translateX(-50%);
   z-index: 20;
   transform-origin: center 65%;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+  filter:
+    drop-shadow(0 4px 8px var(--pointer-shadow))
+    drop-shadow(0 1px 2px var(--pointer-shadow));
 }
 
 .pointer-idle {
