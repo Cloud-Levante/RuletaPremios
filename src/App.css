@@ -251,6 +251,12 @@ body {
   margin-bottom: 2.4rem;
   position: relative;
   z-index: 1;
+  background: rgba(128, 128, 128, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem 2.5rem;
 }
 
 .header-logos {
