@@ -7,5 +7,5 @@ services:
     ports:
       - "${APP_PORT:-8080}:80"
     volumes:
-      - ./public/prizes.json:/usr/share/nginx/html/prizes.json:ro
+      - ./public/prizes/prizes.json:/usr/share/nginx/html/prizes/prizes.json:ro
     restart: unless-stopped

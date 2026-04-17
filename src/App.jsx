@@ -118,7 +118,7 @@ export default function App() {
   const fileInputRef = useRef(null)
 
   useEffect(() => {
-    fetch('/prizes.json')
+    fetch('/prizes/prizes.json')
       .then(res => {
         if (!res.ok) throw new Error('No se pudo cargar prizes.json')
         return res.json()
@@ -220,9 +220,9 @@ export default function App() {
 
       <header className="header">
         <div className="header-logos">
-          <img src="/cloudlevante-logo.jpg" alt="Cloud Levante" className="header-logo cl-logo" />
-          <img src="/cross-logo-transparent.png" alt="×" className="header-x-logo" />
-          <img src="/ionos-logo.jpg" alt="IONOS" className="header-logo ionos-logo" />
+          <img src="/images/cloudlevante-logo.jpg" alt="Cloud Levante" className="header-logo cl-logo" />
+          <img src="/images/cross-logo-transparent.png" alt="×" className="header-x-logo" />
+          <img src="/images/ionos-logo.jpg" alt="IONOS" className="header-logo ionos-logo" />
         </div>
         <h1 className="title">Ruleta de la Nube</h1>
         <p className="subtitle">Gira y descubre tu premio</p>
@@ -265,7 +265,7 @@ export default function App() {
             </div>
             <div className="wheel-3d-overlay" />
             <div className="wheel-center-hub">
-              <img src="/CL_IONOS-logo.png" alt="Cloud Levante × IONOS" className="hub-logo" />
+              <img src="/images/CL_IONOS-logo.png" alt="Cloud Levante × IONOS" className="hub-logo" />
             </div>
           </div>
           {showSpinBtn && (

@@ -137,7 +137,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('/blue_world_background.jpeg') center bottom / cover no-repeat;
+  background: url('/images/blue_world_background.jpeg') center bottom / cover no-repeat;
   z-index: 0;
   transition: opacity 0.3s ease, filter 0.3s ease;
 }
