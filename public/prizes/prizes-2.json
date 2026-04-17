@@ -1,0 +1,4 @@
+[
+  { "option": "Premio A", "fullName": "Premio A completo", "style": { "backgroundColor": "#003D8F", "textColor": "#ffffff" } },
+  { "option": "Premio B", "fullName": "Premio B completo", "style": { "backgroundColor": "#FF6B00", "textColor": "#ffffff" } }
+]

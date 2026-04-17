@@ -1,0 +1,47 @@
+[
+  {
+    "option": "Demo IA",
+    "fullName": "Acceso a demo exclusiva de inteligencia artificial",
+    "style": { "backgroundColor": "#003D8F", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Plan Seguridad",
+    "fullName": "Guía práctica: Plan de seguridad en 100 días",
+    "style": { "backgroundColor": "#FF6B00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Auditoría Cyber",
+    "fullName": "Auditoría express de ciberseguridad",
+    "style": { "backgroundColor": "#0057C2", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Costes Cloud",
+    "fullName": "Revisión de costes cloud con recomendaciones",
+    "style": { "backgroundColor": "#FF8C00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Consultoría 30'",
+    "fullName": "Sesión de consultoría (30 min)",
+    "style": { "backgroundColor": "#004DB3", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Quick Win",
+    "fullName": "Identificación quick win para tu empresa",
+    "style": { "backgroundColor": "#E55A00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Casos Uso IA",
+    "fullName": "Análisis de casos de uso de inteligencia artificial",
+    "style": { "backgroundColor": "#0066D6", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Roadmap Tech",
+    "fullName": "Mini roadmap tecnológico (primeros pasos)",
+    "style": { "backgroundColor": "#FF7A00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Vuelve a girar",
+    "fullName": null,
+    "style": { "backgroundColor": "#0052A5", "textColor": "#ffffff" }
+  }
+]
