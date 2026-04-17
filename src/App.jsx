@@ -201,27 +201,32 @@ export default function App() {
           </div>
           <Pointer idle={idle} />
           <div className="wheel-container">
-            <Wheel
-              mustStartSpinning={mustSpin}
-              prizeNumber={prizeNumber}
-              data={prizes}
-              onStopSpinning={handleStopSpinning}
-              outerBorderColor="var(--wheel-border)"
-              outerBorderWidth={3}
-              innerRadius={0}
-              innerBorderColor="transparent"
-              innerBorderWidth={0}
-              radiusLineColor="var(--wheel-line)"
-              radiusLineWidth={1}
-              fontSize={12}
-              fontFamily="Inter"
-              fontWeight="600"
-              perpendicularText={false}
-              textDistance={68}
-              spinDuration={0.8}
-              disableInitialAnimation={true}
-              pointerProps={{ style: { display: 'none' } }}
-            />
+            <div
+              className="wheel-rotation-offset"
+              style={{ '--num-prizes': prizes.length }}
+            >
+              <Wheel
+                mustStartSpinning={mustSpin}
+                prizeNumber={prizeNumber}
+                data={prizes}
+                onStopSpinning={handleStopSpinning}
+                outerBorderColor="var(--wheel-border)"
+                outerBorderWidth={3}
+                innerRadius={0}
+                innerBorderColor="transparent"
+                innerBorderWidth={0}
+                radiusLineColor="var(--wheel-line)"
+                radiusLineWidth={1}
+                fontSize={12}
+                fontFamily="Inter"
+                fontWeight="600"
+                perpendicularText={false}
+                textDistance={68}
+                spinDuration={0.8}
+                disableInitialAnimation={true}
+                pointerProps={{ style: { display: 'none' } }}
+              />
+            </div>
             <div className="wheel-3d-overlay" />
             <div className="wheel-center-hub" />
           </div>

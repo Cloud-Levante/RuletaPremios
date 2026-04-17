@@ -324,8 +324,16 @@ body {
   justify-content: center;
 }
 
+/* Rotation offset: the library calculates the stop position for its own
+   pointer (top-right). Our pointer is at top-center, so we rotate the wheel
+   by one full segment to align the winning prize under our pointer.
+   Auto-adjusts for any number of prizes via --num-prizes. */
+.wheel-rotation-offset {
+  transform: rotate(calc(-360deg / var(--num-prizes)));
+}
+
 /* Force library wrapper to exact size and center it */
-.wheel-container > div:first-child {
+.wheel-rotation-offset > div {
   width: 570px !important;
   height: 570px !important;
   max-width: 570px !important;
@@ -334,7 +342,7 @@ body {
 }
 
 /* Clip canvas to circle */
-.wheel-container > div:first-child canvas {
+.wheel-rotation-offset > div canvas {
   clip-path: circle(48.5%);
 }
 
@@ -579,7 +587,7 @@ body {
     padding: 10px;
   }
 
-  .wheel-container > div:first-child {
+  .wheel-rotation-offset > div {
     width: 320px !important;
     height: 320px !important;
     max-width: 320px !important;
