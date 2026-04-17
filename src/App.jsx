@@ -68,9 +68,6 @@ function Pointer({ idle }) {
   )
 }
 
-const PEG_COUNT = 36
-
-// No sync hook needed — pegs spin via CSS class
 
 export default function App() {
   const [prizes, setPrizes] = useState([])
@@ -202,7 +199,6 @@ export default function App() {
           <div className="wheel-container">
             <div
               className="wheel-rotation-offset"
-
               style={{ '--num-prizes': prizes.length }}
             >
               <Wheel
@@ -226,11 +222,6 @@ export default function App() {
                 disableInitialAnimation={true}
                 pointerProps={{ style: { display: 'none' } }}
               />
-            </div>
-            <div className={`wheel-pegs-ring ${mustSpin ? 'pegs-spinning' : ''}`}>
-              {Array.from({ length: PEG_COUNT }).map((_, i) => (
-                <div key={i} className="peg" style={{ '--i': i, '--total': PEG_COUNT }} />
-              ))}
             </div>
             <div className="wheel-3d-overlay" />
             <div className="wheel-center-hub">
