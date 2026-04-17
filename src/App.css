@@ -415,7 +415,12 @@ body {
   justify-content: center;
 }
 
-/* No CSS rotation offset — compensation is done in JS by shifting prizeNumber */
+/* The library's internal pointer is at ~40° clockwise from top-center.
+   Our pointer is at 0° (top-center). We rotate the entire wheel by -40°
+   to compensate. This is a FIXED angle — works for any number of prizes. */
+.wheel-rotation-offset {
+  transform: rotate(-40deg);
+}
 
 /* Force library wrapper to exact size and center it */
 .wheel-rotation-offset > div {

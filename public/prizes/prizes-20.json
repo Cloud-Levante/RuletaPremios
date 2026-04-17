@@ -1,0 +1,22 @@
+[
+  { "option": "Premio A", "fullName": "Premio A completo", "style": { "backgroundColor": "#003D8F", "textColor": "#ffffff" } },
+  { "option": "Premio B", "fullName": "Premio B completo", "style": { "backgroundColor": "#FF6B00", "textColor": "#ffffff" } },
+  { "option": "Premio C", "fullName": "Premio C completo", "style": { "backgroundColor": "#0057C2", "textColor": "#ffffff" } },
+  { "option": "Premio D", "fullName": "Premio D completo", "style": { "backgroundColor": "#FF8C00", "textColor": "#ffffff" } },
+  { "option": "Premio E", "fullName": "Premio E completo", "style": { "backgroundColor": "#004DB3", "textColor": "#ffffff" } },
+  { "option": "Premio F", "fullName": "Premio F completo", "style": { "backgroundColor": "#E55A00", "textColor": "#ffffff" } },
+  { "option": "Premio G", "fullName": "Premio G completo", "style": { "backgroundColor": "#0066D6", "textColor": "#ffffff" } },
+  { "option": "Premio H", "fullName": "Premio H completo", "style": { "backgroundColor": "#FF7A00", "textColor": "#ffffff" } },
+  { "option": "Premio I", "fullName": "Premio I completo", "style": { "backgroundColor": "#0052A5", "textColor": "#ffffff" } },
+  { "option": "Premio J", "fullName": "Premio J completo", "style": { "backgroundColor": "#CC4A00", "textColor": "#ffffff" } },
+  { "option": "Premio K", "fullName": "Premio K completo", "style": { "backgroundColor": "#003A99", "textColor": "#ffffff" } },
+  { "option": "Premio L", "fullName": "Premio L completo", "style": { "backgroundColor": "#FF9E2C", "textColor": "#ffffff" } },
+  { "option": "Premio M", "fullName": "Premio M completo", "style": { "backgroundColor": "#0070E0", "textColor": "#ffffff" } },
+  { "option": "Premio N", "fullName": "Premio N completo", "style": { "backgroundColor": "#D94E00", "textColor": "#ffffff" } },
+  { "option": "Premio O", "fullName": "Premio O completo", "style": { "backgroundColor": "#1A5BB5", "textColor": "#ffffff" } },
+  { "option": "Premio P", "fullName": "Premio P completo", "style": { "backgroundColor": "#00457A", "textColor": "#ffffff" } },
+  { "option": "Premio Q", "fullName": "Premio Q completo", "style": { "backgroundColor": "#E87400", "textColor": "#ffffff" } },
+  { "option": "Premio R", "fullName": "Premio R completo", "style": { "backgroundColor": "#004FC4", "textColor": "#ffffff" } },
+  { "option": "Premio S", "fullName": "Premio S completo", "style": { "backgroundColor": "#B84000", "textColor": "#ffffff" } },
+  { "option": "Premio T", "fullName": "Premio T completo", "style": { "backgroundColor": "#0060CC", "textColor": "#ffffff" } }
+]

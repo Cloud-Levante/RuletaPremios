@@ -1,0 +1,8 @@
+[
+  { "option": "Premio A", "fullName": "Premio A completo", "style": { "backgroundColor": "#003D8F", "textColor": "#ffffff" } },
+  { "option": "Premio B", "fullName": "Premio B completo", "style": { "backgroundColor": "#FF6B00", "textColor": "#ffffff" } },
+  { "option": "Premio C", "fullName": "Premio C completo", "style": { "backgroundColor": "#0057C2", "textColor": "#ffffff" } },
+  { "option": "Premio D", "fullName": "Premio D completo", "style": { "backgroundColor": "#FF8C00", "textColor": "#ffffff" } },
+  { "option": "Premio E", "fullName": "Premio E completo", "style": { "backgroundColor": "#004DB3", "textColor": "#ffffff" } },
+  { "option": "Premio F", "fullName": "Premio F completo", "style": { "backgroundColor": "#E55A00", "textColor": "#ffffff" } }
+]
