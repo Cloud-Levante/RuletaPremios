@@ -228,7 +228,9 @@ export default function App() {
               />
             </div>
             <div className="wheel-3d-overlay" />
-            <div className="wheel-center-hub" />
+            <div className="wheel-center-hub">
+              <img src="/CL_IONOS-logo.png" alt="Cloud Levante × IONOS" className="hub-logo" />
+            </div>
           </div>
         </div>
 
