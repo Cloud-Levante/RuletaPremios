@@ -1,22 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { Wheel } from 'react-custom-roulette'
+import AdminPanel from './AdminPanel'
 import './App.css'
 
-function TopBar({ dark, onToggleDark, onLoadFile }) {
-  const [settingsOpen, setSettingsOpen] = useState(false)
-  const menuRef = useRef(null)
-
-  useEffect(() => {
-    if (!settingsOpen) return
-    function handleClick(e) {
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
-        setSettingsOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClick)
-    return () => document.removeEventListener('mousedown', handleClick)
-  }, [settingsOpen])
-
+function TopBar({ dark, onToggleDark, onOpenAdmin }) {
   return (
     <div className="top-bar">
       <button className="top-btn" onClick={onToggleDark} aria-label="Cambiar tema">
@@ -38,26 +25,12 @@ function TopBar({ dark, onToggleDark, onLoadFile }) {
           </svg>
         )}
       </button>
-      <div className="settings-wrap" ref={menuRef}>
-        <button className="top-btn" onClick={() => setSettingsOpen(o => !o)} aria-label="Ajustes">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="3" />
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-          </svg>
-        </button>
-        {settingsOpen && (
-          <div className="settings-menu">
-            <button className="settings-item" onClick={() => { onLoadFile(); setSettingsOpen(false) }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="17 8 12 3 7 8" />
-                <line x1="12" y1="3" x2="12" y2="15" />
-              </svg>
-              Cargar premios
-            </button>
-          </div>
-        )}
-      </div>
+      <button className="top-btn" onClick={onOpenAdmin} aria-label="Ajustes">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+        </svg>
+      </button>
     </div>
   )
 }
@@ -115,6 +88,7 @@ export default function App() {
   const [showModal, setShowModal] = useState(false)
   const [dark, setDark] = useState(true)
   const [showSpinBtn, setShowSpinBtn] = useState(true)
+  const [showAdmin, setShowAdmin] = useState(false)
   const fileInputRef = useRef(null)
 
   useEffect(() => {
@@ -198,7 +172,7 @@ export default function App() {
   if (error) {
     return (
       <div className={`app ${theme}`}>
-        <TopBar dark={dark} onToggleDark={() => setDark(d => !d)} onLoadFile={() => fileInputRef.current?.click()} />
+        <TopBar dark={dark} onToggleDark={() => setDark(d => !d)} onOpenAdmin={() => setShowAdmin(true)} />
         <p className="error-text">Error: {error}</p>
         <input
           ref={fileInputRef}
@@ -216,7 +190,7 @@ export default function App() {
 
   return (
     <div className={`app ${theme} ${mustSpin ? 'wheel-spinning' : 'wheel-idle'}`}>
-      <TopBar dark={dark} onToggleDark={() => setDark(d => !d)} onLoadFile={() => fileInputRef.current?.click()} />
+      <TopBar dark={dark} onToggleDark={() => setDark(d => !d)} onOpenAdmin={() => setShowAdmin(true)} />
 
       <header className="header">
         <div className="header-logos">
@@ -283,6 +257,16 @@ export default function App() {
           hidden
         />
       </main>
+
+      {showAdmin && (
+        <AdminPanel
+          prizes={prizes}
+          onClose={() => setShowAdmin(false)}
+          onLoadFile={() => fileInputRef.current?.click()}
+          dark={dark}
+          onToggleDark={() => setDark(d => !d)}
+        />
+      )}
 
       {showModal && winner && (
         <div className="modal-overlay" onClick={() => closeModal(winner?.fullName !== null)}>
