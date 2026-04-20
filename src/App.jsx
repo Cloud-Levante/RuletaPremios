@@ -1,11 +1,26 @@
 import { useState, useEffect, useRef } from 'react'
 import { Wheel } from 'react-custom-roulette'
 import AdminPanel from './AdminPanel'
+import useSounds from './useSounds'
 import './App.css'
 
-function TopBar({ dark, onToggleDark, onOpenAdmin }) {
+function TopBar({ dark, onToggleDark, onOpenAdmin, muted, onToggleMute }) {
   return (
     <div className="top-bar">
+      <button className="top-btn" onClick={onToggleMute} aria-label={muted ? 'Activar sonido' : 'Silenciar'}>
+        {muted ? (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <line x1="23" y1="9" x2="17" y2="15" />
+            <line x1="17" y1="9" x2="23" y2="15" />
+          </svg>
+        ) : (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+          </svg>
+        )}
+      </button>
       <button className="top-btn" onClick={onToggleDark} aria-label="Cambiar tema">
         {dark ? (
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -98,6 +113,7 @@ export default function App() {
     return saved ? parseInt(saved) : 5
   })
   const fileInputRef = useRef(null)
+  const { play, startSpinTick, stopSpinTick, muted, toggleMute } = useSounds()
 
   useEffect(() => {
     fetch('/prizes/prizes.json')
@@ -162,12 +178,24 @@ export default function App() {
     setShowSpinBtn(false)
     setWinner(null)
     setShowModal(false)
+    play('whoosh')
+    // Match react-custom-roulette internal timing:
+    // startSpinningTime=2600 + continueSpinningTime=750 + stopSpinningTime=8000/spinDuration
+    const totalAnimMs = 2600 + 750 + (8000 / spinDuration)
+    startSpinTick(totalAnimMs)
   }
 
   function handleStopSpinning() {
+    stopSpinTick()
     setMustSpin(false)
-    setWinner(prizes[prizeNumber])
+    const prize = prizes[prizeNumber]
+    setWinner(prize)
     setShowModal(true)
+    // Play sound based on prize type
+    const type = prize.type || 'good_prize'
+    if (type === 'try_again') play('retry')
+    else if (type === 'bad_prize') play('lose')
+    else play('win')
   }
 
   function closeModal(restoreBtn = false) {
@@ -190,7 +218,7 @@ export default function App() {
   if (error) {
     return (
       <div className={`app ${theme}`}>
-        <TopBar dark={dark} onToggleDark={() => setDark(d => !d)} onOpenAdmin={() => setShowAdmin(true)} />
+        <TopBar dark={dark} onToggleDark={() => setDark(d => !d)} onOpenAdmin={() => setShowAdmin(true)} muted={muted} onToggleMute={toggleMute} />
         <p className="error-text">Error: {error}</p>
         <input
           ref={fileInputRef}
@@ -208,7 +236,7 @@ export default function App() {
 
   return (
     <div className={`app ${theme} ${mustSpin ? 'wheel-spinning' : 'wheel-idle'}`}>
-      <TopBar dark={dark} onToggleDark={() => setDark(d => !d)} onOpenAdmin={() => setShowAdmin(true)} />
+      <TopBar dark={dark} onToggleDark={() => setDark(d => !d)} onOpenAdmin={() => setShowAdmin(true)} muted={muted} onToggleMute={toggleMute} />
 
       <header className="header">
         <div className="header-logos">
@@ -292,15 +320,26 @@ export default function App() {
       )}
 
       {showModal && winner && (
-        <div className="modal-overlay" onClick={() => closeModal(winner?.fullName !== null)}>
+        <div className="modal-overlay" onClick={() => closeModal(winner?.type !== 'try_again')}>
           <div className="modal" onClick={e => e.stopPropagation()}>
-            {winner.fullName === null ? (
+            {winner.type === 'try_again' ? (
               <>
                 <div className="modal-icon">🔄</div>
                 <h2 className="modal-title">¡Inténtalo de nuevo!</h2>
                 <p className="modal-subtitle">La ruleta te da otra oportunidad</p>
                 <button className="modal-close" onClick={() => { closeModal(false); handleSpin() }}>
                   ¡Girar de nuevo!
+                </button>
+              </>
+            ) : winner.type === 'bad_prize' ? (
+              <>
+                <div className="modal-icon">😅</div>
+                <h2 className="modal-title">¡Vaya!</h2>
+                <p className="modal-subtitle">Te ha tocado:</p>
+                <div className="modal-prize modal-prize-bad">{winner.fullName}</div>
+                <p className="modal-note">¡La suerte no siempre acompaña!</p>
+                <button className="modal-close" onClick={() => closeModal(true)}>
+                  Aceptar
                 </button>
               </>
             ) : (

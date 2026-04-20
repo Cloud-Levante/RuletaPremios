@@ -635,6 +635,12 @@ body {
   line-height: 1.4;
 }
 
+.modal-prize-bad {
+  color: var(--error);
+  border-color: rgba(239, 68, 68, 0.2);
+  background: rgba(239, 68, 68, 0.05);
+}
+
 .modal-note {
   font-size: 0.8rem;
   font-weight: 400;
