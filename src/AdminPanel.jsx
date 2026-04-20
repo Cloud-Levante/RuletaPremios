@@ -187,8 +187,14 @@ function SettingsPanel({ prizes, onClose, onLoadFile, dark, onToggleDark, onSign
             <div className="admin-section">
               <h3 className="admin-section-title">Premios</h3>
               <button className="admin-action-btn" onClick={() => { onLoadFile(); }}>
-                Cargar archivo JSON
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="17 8 12 3 7 8" />
+                  <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                Cargar archivo de premios (.json)
               </button>
+              <h4 className="admin-section-subtitle">Probabilidades actuales</h4>
               <div className="admin-prizes-table">
                 <div className="admin-table-header">
                   <span>Premio</span>
@@ -217,7 +223,26 @@ function SettingsPanel({ prizes, onClose, onLoadFile, dark, onToggleDark, onSign
           {section === 'wheel' && (
             <div className="admin-section">
               <h3 className="admin-section-title">Ruleta</h3>
-              <p className="admin-section-desc">Configuracion de velocidad y vueltas (proximamente)</p>
+              <div className="admin-control-row">
+                <span className="admin-control-label">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  Velocidad del giro
+                </span>
+                <span className="admin-badge">proximamente</span>
+              </div>
+              <div className="admin-control-row">
+                <span className="admin-control-label">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="23 4 23 10 17 10" />
+                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+                  </svg>
+                  Numero de vueltas antes de frenar
+                </span>
+                <span className="admin-badge">proximamente</span>
+              </div>
             </div>
           )}
 
@@ -225,13 +250,37 @@ function SettingsPanel({ prizes, onClose, onLoadFile, dark, onToggleDark, onSign
             <div className="admin-section">
               <h3 className="admin-section-title">Pantalla</h3>
               <div className="admin-control-row">
-                <span>Tema</span>
+                <span className="admin-control-label">
+                  {dark ? (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="5" />
+                      <line x1="12" y1="1" x2="12" y2="3" />
+                      <line x1="12" y1="21" x2="12" y2="23" />
+                      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                      <line x1="1" y1="12" x2="3" y2="12" />
+                      <line x1="21" y1="12" x2="23" y2="12" />
+                      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                  ) : (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                  )}
+                  Apariencia
+                </span>
                 <button className="admin-action-btn" onClick={onToggleDark}>
                   {dark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
                 </button>
               </div>
               <div className="admin-control-row">
-                <span>Pantalla completa</span>
+                <span className="admin-control-label">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                  </svg>
+                  Pantalla completa
+                </span>
                 <button className="admin-action-btn" onClick={() => {
                   if (document.fullscreenElement) {
                     document.exitFullscreen()
@@ -239,7 +288,7 @@ function SettingsPanel({ prizes, onClose, onLoadFile, dark, onToggleDark, onSign
                     document.documentElement.requestFullscreen()
                   }
                 }}>
-                  {document.fullscreenElement ? 'Salir' : 'Activar'}
+                  {document.fullscreenElement ? 'Salir de pantalla completa' : 'Activar pantalla completa'}
                 </button>
               </div>
             </div>
