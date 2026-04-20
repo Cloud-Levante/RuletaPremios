@@ -1,0 +1,98 @@
+[
+  {
+    "option": "Demo IA",
+    "fullName": "Acceso a demo exclusiva de inteligencia artificial",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#003D8F", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Plan Seguridad",
+    "fullName": "Guía práctica: Plan de seguridad en 100 días",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#FF6B00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Auditoría Cyber",
+    "fullName": "Auditoría express de ciberseguridad",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#0057C2", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Costes Cloud",
+    "fullName": "Revisión de costes cloud con recomendaciones",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#FF8C00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Consultoría 30'",
+    "fullName": "Sesión de consultoría (30 min)",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#004DB3", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Quick Win",
+    "fullName": "Identificación quick win para tu empresa",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#E55A00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Casos Uso IA",
+    "fullName": "Análisis de casos de uso de inteligencia artificial",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#0066D6", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Roadmap Tech",
+    "fullName": "Mini roadmap tecnológico (primeros pasos)",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#FF7A00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Backup Gratis",
+    "fullName": "1 mes de backup cloud gratuito",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#00457A", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Taller DevOps",
+    "fullName": "Taller práctico de DevOps (2h)",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#D94E00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Análisis RGPD",
+    "fullName": "Análisis rápido de cumplimiento RGPD",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#003A99", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Migración Express",
+    "fullName": "Consultoría de migración cloud express",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#FF9E2C", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Hosting 3 meses",
+    "fullName": "3 meses de hosting web gratuito",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#0070E0", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Kit Merch",
+    "fullName": "Kit de merchandising Cloud Levante × IONOS",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#CC4A00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Vuelve a girar",
+    "fullName": "¡Otra oportunidad!",
+    "type": "try_again",
+    "style": { "backgroundColor": "#0052A5", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Monitor Web",
+    "fullName": "Monitorización web gratuita durante 1 mes",
+    "type": "good_prize",
+    "style": { "backgroundColor": "#1A5BB5", "textColor": "#ffffff" }
+  }
+]

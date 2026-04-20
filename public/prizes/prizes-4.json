@@ -1,0 +1,6 @@
+[
+  { "option": "Premio A", "fullName": "Premio A completo", "type": "good_prize", "style": { "backgroundColor": "#003D8F", "textColor": "#ffffff" } },
+  { "option": "Premio B", "fullName": "Premio B completo", "type": "good_prize", "style": { "backgroundColor": "#FF6B00", "textColor": "#ffffff" } },
+  { "option": "Premio C", "fullName": "Premio C completo", "type": "good_prize", "style": { "backgroundColor": "#0057C2", "textColor": "#ffffff" } },
+  { "option": "Premio D", "fullName": "Premio D completo", "type": "good_prize", "style": { "backgroundColor": "#FF8C00", "textColor": "#ffffff" } }
+]

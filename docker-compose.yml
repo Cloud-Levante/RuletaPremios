@@ -1,0 +1,11 @@
+services:
+  ruleta:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cl-ruleta
+    ports:
+      - "${APP_PORT:-8080}:80"
+    volumes:
+      - ./public/prizes/prizes.json:/usr/share/nginx/html/prizes/prizes.json:ro
+    restart: unless-stopped
