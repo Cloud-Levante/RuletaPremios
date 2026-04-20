@@ -148,7 +148,100 @@ const ICONS = {
   ),
 }
 
-function SettingsPanel({ prizes, onClose, onLoadFile, dark, onToggleDark, onSignOut }) {
+const DEFAULT_DURATION = 0.8
+const DEFAULT_REVOLUTIONS = 5
+
+function WheelSettings({ spinDuration, spinRevolutions, onApply }) {
+  const [draftDuration, setDraftDuration] = useState(spinDuration)
+  const [draftRevolutions, setDraftRevolutions] = useState(spinRevolutions)
+
+  const hasChanges = draftDuration !== spinDuration || draftRevolutions !== spinRevolutions
+
+  return (
+    <div className="admin-section">
+      <h3 className="admin-section-title">Ruleta</h3>
+      <div className="admin-slider-group">
+        <div className="admin-slider-header">
+          <span className="admin-control-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            Velocidad del giro
+          </span>
+          <span className="admin-slider-value">{draftDuration.toFixed(1)}s</span>
+        </div>
+        <input
+          type="range"
+          className="admin-slider"
+          min="0.3"
+          max="2.0"
+          step="0.1"
+          value={draftDuration}
+          onChange={e => setDraftDuration(parseFloat(e.target.value))}
+        />
+        <div className="admin-slider-labels">
+          <span>Rapido</span>
+          <span>Lento</span>
+        </div>
+      </div>
+      <div className="admin-slider-group">
+        <div className="admin-slider-header">
+          <span className="admin-control-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="23 4 23 10 17 10" />
+              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+            </svg>
+            Vueltas antes de frenar
+          </span>
+          <span className="admin-slider-value">{draftRevolutions}</span>
+        </div>
+        <input
+          type="range"
+          className="admin-slider"
+          min="3"
+          max="15"
+          step="1"
+          value={draftRevolutions}
+          onChange={e => setDraftRevolutions(parseInt(e.target.value))}
+        />
+        <div className="admin-slider-labels">
+          <span>Pocas</span>
+          <span>Muchas</span>
+        </div>
+      </div>
+      <p className="admin-section-desc">
+        Duracion estimada del giro: ~{(draftDuration * draftRevolutions * 0.4).toFixed(1)}s
+      </p>
+      <div className="admin-actions">
+        <button
+          className="admin-action-btn admin-btn-danger"
+          onClick={() => { setDraftDuration(DEFAULT_DURATION); setDraftRevolutions(DEFAULT_REVOLUTIONS) }}
+        >
+          Resetear
+        </button>
+        <div className="admin-actions-right">
+          <button
+            className="admin-action-btn"
+            onClick={() => { setDraftDuration(spinDuration); setDraftRevolutions(spinRevolutions) }}
+            disabled={!hasChanges}
+          >
+            Cancelar
+          </button>
+          <button
+            className="admin-action-btn admin-btn-primary"
+            onClick={() => onApply(draftDuration, draftRevolutions)}
+            disabled={!hasChanges}
+          >
+            Guardar cambios
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function SettingsPanel({ prizes, onClose, onLoadFile, dark, onToggleDark, onSignOut, spinDuration, onSpinDurationChange, spinRevolutions, onSpinRevolutionsChange }) {
   const [section, setSection] = useState('prizes')
   const fileRef = useRef(null)
 
@@ -221,29 +314,11 @@ function SettingsPanel({ prizes, onClose, onLoadFile, dark, onToggleDark, onSign
           )}
 
           {section === 'wheel' && (
-            <div className="admin-section">
-              <h3 className="admin-section-title">Ruleta</h3>
-              <div className="admin-control-row">
-                <span className="admin-control-label">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                  Velocidad del giro
-                </span>
-                <span className="admin-badge">proximamente</span>
-              </div>
-              <div className="admin-control-row">
-                <span className="admin-control-label">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="23 4 23 10 17 10" />
-                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
-                  </svg>
-                  Numero de vueltas antes de frenar
-                </span>
-                <span className="admin-badge">proximamente</span>
-              </div>
-            </div>
+            <WheelSettings
+              spinDuration={spinDuration}
+              spinRevolutions={spinRevolutions}
+              onApply={(dur, rev) => { onSpinDurationChange(dur); onSpinRevolutionsChange(rev) }}
+            />
           )}
 
           {section === 'display' && (
@@ -300,7 +375,7 @@ function SettingsPanel({ prizes, onClose, onLoadFile, dark, onToggleDark, onSign
 }
 
 // ===== Main export: handles auth flow =====
-export default function AdminPanel({ prizes, onClose, onLoadFile, dark, onToggleDark }) {
+export default function AdminPanel({ prizes, onClose, onLoadFile, dark, onToggleDark, spinDuration, onSpinDurationChange, spinRevolutions, onSpinRevolutionsChange }) {
   const [authed, setAuthed] = useState(() => sessionStorage.getItem('admin_auth') === 'true')
 
   // If already registered in this session (no env), validate session
@@ -331,6 +406,10 @@ export default function AdminPanel({ prizes, onClose, onLoadFile, dark, onToggle
       dark={dark}
       onToggleDark={onToggleDark}
       onSignOut={handleSignOut}
+      spinDuration={spinDuration}
+      onSpinDurationChange={onSpinDurationChange}
+      spinRevolutions={spinRevolutions}
+      onSpinRevolutionsChange={onSpinRevolutionsChange}
     />
   )
 }

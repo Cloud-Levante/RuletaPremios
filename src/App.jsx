@@ -89,6 +89,14 @@ export default function App() {
   const [dark, setDark] = useState(true)
   const [showSpinBtn, setShowSpinBtn] = useState(true)
   const [showAdmin, setShowAdmin] = useState(false)
+  const [spinDuration, setSpinDuration] = useState(() => {
+    const saved = localStorage.getItem('spinDuration')
+    return saved ? parseFloat(saved) : 0.8
+  })
+  const [spinRevolutions, setSpinRevolutions] = useState(() => {
+    const saved = localStorage.getItem('spinRevolutions')
+    return saved ? parseInt(saved) : 5
+  })
   const fileInputRef = useRef(null)
 
   useEffect(() => {
@@ -136,9 +144,19 @@ export default function App() {
     e.target.value = ''
   }
 
+  function pickWeightedPrize() {
+    const totalWeight = prizes.reduce((sum, p) => sum + (p.weight || 1), 0)
+    let rand = Math.random() * totalWeight
+    for (let i = 0; i < prizes.length; i++) {
+      rand -= (prizes[i].weight || 1)
+      if (rand <= 0) return i
+    }
+    return prizes.length - 1
+  }
+
   function handleSpin() {
     if (mustSpin) return
-    const randomPrize = Math.floor(Math.random() * prizes.length)
+    const randomPrize = pickWeightedPrize()
     setPrizeNumber(randomPrize)
     setMustSpin(true)
     setShowSpinBtn(false)
@@ -232,7 +250,8 @@ export default function App() {
                 fontWeight="700"
                 perpendicularText={false}
                 textDistance={65}
-                spinDuration={0.8}
+                spinDuration={spinDuration}
+                numberOfSpins={spinRevolutions}
                 disableInitialAnimation={true}
                 pointerProps={{ style: { display: 'none' } }}
               />
@@ -265,6 +284,10 @@ export default function App() {
           onLoadFile={() => fileInputRef.current?.click()}
           dark={dark}
           onToggleDark={() => setDark(d => !d)}
+          spinDuration={spinDuration}
+          onSpinDurationChange={(v) => { setSpinDuration(v); localStorage.setItem('spinDuration', v) }}
+          spinRevolutions={spinRevolutions}
+          onSpinRevolutionsChange={(v) => { setSpinRevolutions(v); localStorage.setItem('spinRevolutions', v) }}
         />
       )}
 
