@@ -1,0 +1,170 @@
+[
+  {
+    "option": "100 €",
+    "fullName": "100 €",
+    "type": "good_prize",
+    "weight": 10,
+    "style": { "backgroundColor": "#FF0000", "textColor": "#ffffff" }
+  },
+  {
+    "option": "250 €",
+    "fullName": "250 €",
+    "type": "good_prize",
+    "weight": 5,
+    "style": { "backgroundColor": "#0000FF", "textColor": "#ffffff" }
+  },
+  {
+    "option": "QUIEBRA",
+    "fullName": "¡Quiebra! Lo pierdes todo...",
+    "type": "bad_prize",
+    "weight": 3,
+    "style": { "backgroundColor": "#000000", "textColor": "#ffffff" }
+  },
+  {
+    "option": "300 €",
+    "fullName": "300 €",
+    "type": "good_prize",
+    "weight": 5,
+    "style": { "backgroundColor": "#FF6600", "textColor": "#ffffff" }
+  },
+  {
+    "option": "150 €",
+    "fullName": "150 €",
+    "type": "good_prize",
+    "weight": 10,
+    "style": { "backgroundColor": "#009900", "textColor": "#ffffff" }
+  },
+  {
+    "option": "500 €",
+    "fullName": "500 €",
+    "type": "good_prize",
+    "weight": 3,
+    "style": { "backgroundColor": "#CC0000", "textColor": "#ffffff" }
+  },
+  {
+    "option": "PIERDE TURNO",
+    "fullName": "¡Pierdes el turno!",
+    "type": "bad_prize",
+    "weight": 3,
+    "style": { "backgroundColor": "#FFFFFF", "textColor": "#000000" }
+  },
+  {
+    "option": "200 €",
+    "fullName": "200 €",
+    "type": "good_prize",
+    "weight": 5,
+    "style": { "backgroundColor": "#3366FF", "textColor": "#ffffff" }
+  },
+  {
+    "option": "350 €",
+    "fullName": "350 €",
+    "type": "good_prize",
+    "weight": 5,
+    "style": { "backgroundColor": "#FF9900", "textColor": "#ffffff" }
+  },
+  {
+    "option": "50 €",
+    "fullName": "50 €",
+    "type": "good_prize",
+    "weight": 10,
+    "style": { "backgroundColor": "#00CC00", "textColor": "#ffffff" }
+  },
+  {
+    "option": "400 €",
+    "fullName": "400 €",
+    "type": "good_prize",
+    "weight": 3,
+    "style": { "backgroundColor": "#9900CC", "textColor": "#ffffff" }
+  },
+  {
+    "option": "QUIEBRA",
+    "fullName": "¡Quiebra! Lo pierdes todo...",
+    "type": "bad_prize",
+    "weight": 3,
+    "style": { "backgroundColor": "#000000", "textColor": "#ffffff" }
+  },
+  {
+    "option": "600 €",
+    "fullName": "600 €",
+    "type": "good_prize",
+    "weight": 3,
+    "style": { "backgroundColor": "#CC3300", "textColor": "#ffffff" }
+  },
+  {
+    "option": "175 €",
+    "fullName": "175 €",
+    "type": "good_prize",
+    "weight": 5,
+    "style": { "backgroundColor": "#0066CC", "textColor": "#ffffff" }
+  },
+  {
+    "option": "450 €",
+    "fullName": "450 €",
+    "type": "good_prize",
+    "weight": 3,
+    "style": { "backgroundColor": "#FF3300", "textColor": "#ffffff" }
+  },
+  {
+    "option": "75 €",
+    "fullName": "75 €",
+    "type": "good_prize",
+    "weight": 10,
+    "style": { "backgroundColor": "#33CC33", "textColor": "#ffffff" }
+  },
+  {
+    "option": "PIERDE TURNO",
+    "fullName": "¡Pierdes el turno!",
+    "type": "bad_prize",
+    "weight": 3,
+    "style": { "backgroundColor": "#FFFFFF", "textColor": "#000000" }
+  },
+  {
+    "option": "700 €",
+    "fullName": "700 €",
+    "type": "good_prize",
+    "weight": 1,
+    "style": { "backgroundColor": "#990000", "textColor": "#ffffff" }
+  },
+  {
+    "option": "125 €",
+    "fullName": "125 €",
+    "type": "good_prize",
+    "weight": 10,
+    "style": { "backgroundColor": "#006699", "textColor": "#ffffff" }
+  },
+  {
+    "option": "550 €",
+    "fullName": "550 €",
+    "type": "good_prize",
+    "weight": 3,
+    "style": { "backgroundColor": "#FF6633", "textColor": "#ffffff" }
+  },
+  {
+    "option": "1000 €",
+    "fullName": "¡1.000 €! ¡El premio gordo!",
+    "type": "good_prize",
+    "weight": 1,
+    "style": { "backgroundColor": "#FFD700", "textColor": "#000000" }
+  },
+  {
+    "option": "225 €",
+    "fullName": "225 €",
+    "type": "good_prize",
+    "weight": 5,
+    "style": { "backgroundColor": "#3399FF", "textColor": "#ffffff" }
+  },
+  {
+    "option": "Vuelve a girar",
+    "fullName": "¡Tira otra vez!",
+    "type": "try_again",
+    "weight": 2,
+    "style": { "backgroundColor": "#00FF00", "textColor": "#000000" }
+  },
+  {
+    "option": "800 €",
+    "fullName": "800 €",
+    "type": "good_prize",
+    "weight": 1,
+    "style": { "backgroundColor": "#660099", "textColor": "#ffffff" }
+  }
+]
